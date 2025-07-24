@@ -7,7 +7,7 @@ import { useMediaQuery } from "react-responsive";
 const Hero = () => {
     const videoRef = useRef();
 
-    const isMobile = useMediaQuery( {maxWidth: 767 });
+    const isMobile = useMediaQuery({maxWidth: 767 });
     useGSAP(() => {
         const heroSplit = new SplitText('.title', { type: 'chars, words' });
         const paragraphSplit = new SplitText('.subtitle', { type: 'lines' });
@@ -50,7 +50,7 @@ const Hero = () => {
         .to('.right-leaf', { y: 200 }, 0)
         .to('.left-leaf', { y: -200 }, 0);
 
-        const startValue = isMobile ? 'top 50%' : 'start 60%';
+        const startValue = isMobile ? 'top 50%' : 'center 60%';
         const endValue = isMobile ? '120% top' : 'bottom top';
 
         const tl =  gsap.timeline({
@@ -65,7 +65,7 @@ const Hero = () => {
 
         videoRef.current.onloadedmetadata = () => {
             tl.to(videoRef.current, { 
-                currentTime: videoRef.current.duration 
+                currentTime: videoRef.current.duration,
             });
         }
     }, [])
